@@ -3,8 +3,8 @@
 #include <string>
 #include <stack>
 #include <vector>
-#include <queue>
-#include <deque>
+//#include <queue>
+//#include <deque>
 
 using namespace std;
 
@@ -56,12 +56,12 @@ int main()
 	int count02 = 0;
 	const int linesToRead = 43;
 	int reverseCount02 = linesToRead + 1;
-	bool reverse = false;
 
 	while (!input02.eof() || !readStack02.empty()) //.eof == end of file
 	{
 		//reverseCount is used because if count02 is less than linesToRead, it'll use the first if statement
 		//probably a better way to do this, but my brain is fried atm.
+		//Maybe using a boolean whether to reverse it or not.
 
 		if (!input02.eof() && count02 < linesToRead) //runs until count gets to linesToRead
 		{
@@ -91,6 +91,13 @@ int main()
 			readStack02.pop();
 			count02--;
 		}
+
+		if (readStack02.empty())
+			cout << "readStack02 is empty." << endl;
+		if (input02.eof() && readStack02.empty())
+			cout << "input02 - End of File" << endl;
+
+		
 	}
 
 	cout << "\n**END**\n" << endl;
