@@ -56,16 +56,12 @@ int main()
 	int count02 = 0;
 	const int linesToRead = 43;
 	int reverseCount02 = linesToRead + 1;
+	bool reverse = false;
 
 	while (!input02.eof() || !readStack02.empty()) //.eof == end of file
 	{
-		/*
-		if (input02.eof())
-			cout << "End of file." << endl;
-		
-		if (readStack02.empty())
-			cout << "readStack02 is empty." << endl;
-		*/
+		//reverseCount is used because if count02 is less than linesToRead, it'll use the first if statement
+		//probably a better way to do this, but my brain is fried atm.
 
 		if (!input02.eof() && count02 < linesToRead) //runs until count gets to linesToRead
 		{
@@ -75,14 +71,14 @@ int main()
 			cout << count02 + 1 << ". " << readStack02.top() << " -			readStack02 size: " << readStack02.size() << endl;
 			count02++;
 		}
-		else if(!input02.eof()) //ALWAYS runs if count is less than linesToRead
+		else if(!input02.eof())
 		{
 			cout << reverseCount02 - 1 << ". " << readStack02.top() << " -			readStack02 size: " << readStack02.size() << endl;
 			readStack02.pop();
 			reverseCount02--;
 		}
 
-		if (!input02.eof() && readStack02.empty()) //resets the loop
+		if (!input02.eof() && readStack02.empty()) //resets the loop when the stack is empty and if the file hasn't ended yet.
 		{
 			count02 = 0;
 			reverseCount02 = linesToRead + 1;
@@ -95,13 +91,11 @@ int main()
 			readStack02.pop();
 			count02--;
 		}
-
-		//what happens if input02.eof is true?
 	}
 
 	cout << "\n**END**\n" << endl;
 
-	/*
+
 	//===========================================================================
 
 	cout << "3. Read the input one line at a time. At any point after reading the first 42 lines, if some line is blank (i.e., a string of length 0), then output the line that occured 42 lines prior to that one. For example,if Line 242 is blank, then your program should output line 200.This program should be implemented so that it never stores more than 43 lines of the input at any given time.\n=============" << endl;
@@ -124,6 +118,6 @@ int main()
 	}
 
 	cout << "\n**END**\n" << endl;
-	*/
+	
 	system("pause");
 }
