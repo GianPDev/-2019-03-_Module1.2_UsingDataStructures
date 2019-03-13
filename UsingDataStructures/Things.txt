@@ -49,6 +49,7 @@ twezzers
 newspaper
 screw
 bookmark
+
 wagon
 canvas
 sailboat
@@ -56,6 +57,7 @@ rubber duck
 ring
 bag
 paper
+
 charger
 keys
 paint brush
@@ -75,6 +77,7 @@ clay pot
 lamp
 chapter book
 eraser
+
 nail file
 rusty nail
 shoes

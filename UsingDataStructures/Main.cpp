@@ -3,8 +3,9 @@
 #include <string>
 #include <stack>
 #include <vector>
-//#include <queue>
+#include <queue>
 //#include <deque>
+//#include <list>
 
 using namespace std;
 
@@ -110,19 +111,67 @@ int main()
 	cout << "**START**\n" << endl;
 
 	ifstream input03("Things.txt");
-	vector<string> readVector03;
+	queue<string> readQueue03;
 
 	int count03 = 0;
 	int reverseCount03 = 0;
 
 	while (!input03.eof()) //.eof == end of file
 	{
-		string line;
-		getline(input03, line);
-		readVector03.push_back(line);
-		cout << count03 + 1 << ". " << readVector03.back() << " -		readStack02 size: " << readVector03.size() << endl;
-		count03++;
+		if (count03 < 42)
+		{
+			string line;
+			getline(input03, line);
+			readQueue03.push(line);
+			cout << count03 + 1 << ". " << readQueue03.back() << "		- (String Length: " << readQueue03.back().length() << ")(readStack02 size: " << readQueue03.size() << ")" << endl;
+			count03++;
+		}
+		else
+		{
+			string line;
+			getline(input03, line);
+
+			//cout << "Front: " << readQueue03.front() << endl;
+			//cout << "Back: " << readQueue03.back() << endl;
+
+			if (line.length() == 0)
+			{
+				cout << "\nLine " << count03 + 1 << " is blank, replacing with Line " << count03 + 1 - 42 << " : " << readQueue03.front() << "\n" << endl;
+				readQueue03.push(readQueue03.front());
+				
+				cout << count03 + 1 << ". " << readQueue03.back() << "		- (String Length: " << readQueue03.back().length() << ")(readStack02 size: " << readQueue03.size() << ")" << endl;
+				count03++;
+			}
+			else
+			{
+				readQueue03.push(line);
+				cout << count03 + 1 << ". " << readQueue03.back() << "		- (String Length: " << readQueue03.back().length() << ")(readStack02 size: " << readQueue03.size() << ")" << endl;
+				count03++;
+			}
+
+			readQueue03.pop();
+		}
 	}
+
+	cout << "\n**END**\n" << endl;
+
+	//===========================================================================
+
+	cout << "4. Read the input one line at a time and write each line to the output if it is not a duplicate of some previous input line.Take special care so that a file with a lot of duplicate lines does not use more memory than what is required for the number of unique lines.\n=============" << endl;
+
+	cout << "**START**\n" << endl;
+
+	ifstream input03("Things.txt");
+	queue<string> readQueue03;
+
+	int count03 = 0;
+	int reverseCount03 = 0;
+
+	while (!input03.eof()) //.eof == end of file
+	{
+
+	}
+
 
 	cout << "\n**END**\n" << endl;
 	
