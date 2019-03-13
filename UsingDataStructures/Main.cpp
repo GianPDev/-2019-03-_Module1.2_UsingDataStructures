@@ -19,27 +19,6 @@ int main()
 	ifstream input01("Things.txt"); //initializes variable with the txt contents, can use input.open("Colors.txt") to open it in another place instead of initialization
 	stack<string> readStack01;
 
-	/*
-	cout << "Pushed:\n" << endl;
-	for (string line; getline(input01, line);) //for loop for pushing every value into staack
-	{
-		dataStack01.push(line);
-		cout << line << ", ";
-	}
-	cout << "\n\ninto dataStack01\n" << endl;
-	cout << "dataStack01 Size: " << dataStack01.size() << "\n" << endl;
-
-	int stackSize = dataStack01.size(); //Created stackSize variable as using dataStack01.size() in for loop will reduce the size every time an item is popped, which prevents it from looping every value
-
-
-	for (int i=0; i<stackSize; i++) //reads the top value then pops it
-	{
-		cout << i+1 << ". " << dataStack01.top() << endl;
-		dataStack01.pop();
-	}
-
-	*/
-
 	int count01 = 0;
 	int reverseCount01 = 0;
 
@@ -75,39 +54,49 @@ int main()
 	stack<string> readStack02;
 
 	int count02 = 0;
-	const int linesToRead = 50;
+	const int linesToRead = 43;
 	int reverseCount02 = linesToRead + 1;
-	bool finished = false;
 
-	while (!input02.eof() || !readStack02.empty())
+	while (!input02.eof() || !readStack02.empty()) //.eof == end of file
 	{
-		if (count02 < linesToRead)
+		/*
+		if (input02.eof())
+			cout << "End of file." << endl;
+		
+		if (readStack02.empty())
+			cout << "readStack02 is empty." << endl;
+		*/
+
+		if (!input02.eof() && count02 < linesToRead) //runs until count gets to linesToRead
 		{
 			string line;
 			getline(input02, line);
 			readStack02.push(line);
-			cout << count02 + 1 << ". " << readStack02.top() << " -		readStack02 size: " << readStack02.size() << endl;
+			cout << count02 + 1 << ". " << readStack02.top() << " -			readStack02 size: " << readStack02.size() << endl;
 			count02++;
 		}
-		else
+		else if(!input02.eof()) //ALWAYS runs if count is less than linesToRead
 		{
 			cout << reverseCount02 - 1 << ". " << readStack02.top() << " -			readStack02 size: " << readStack02.size() << endl;
 			readStack02.pop();
-			count02++;
 			reverseCount02--;
 		}
-		if (readStack02.empty())
+
+		if (!input02.eof() && readStack02.empty()) //resets the loop
 		{
 			count02 = 0;
 			reverseCount02 = linesToRead + 1;
+			cout << "counter reset." << endl;
 		}
-		if (input02.eof() && !readStack02.empty())
-		{
-			cout << reverseCount02 - 1 << ". " << readStack02.top() << " -			readStack02 size: " << readStack02.size() << endl;
+
+		if (input02.eof() && !readStack02.empty()) //if file has ended and the stack is still not empty, empty it
+		{		
+			cout << count02 << ". " << readStack02.top() << " -			readStack02 size: " << readStack02.size() << endl;
 			readStack02.pop();
-			count02++;
-			reverseCount02--;
+			count02--;
 		}
+
+		//what happens if input02.eof is true?
 	}
 
 	cout << "\n**END**\n" << endl;
@@ -120,24 +109,18 @@ int main()
 	cout << "**START**\n" << endl;
 
 	ifstream input03("Things.txt");
-	vector<string> dataVector01;
+	vector<string> readVector03;
 
-	cout << "Pushed:\n" << endl;
-	for (string line; getline(input03, line);) //for loop for pushing every value into stack
+	int count03 = 0;
+	int reverseCount03 = 0;
+
+	while (!input03.eof()) //.eof == end of file
 	{
-		dataVector01.push_back(line);
-		cout << line << ", ";
-	}
-	cout << "\n\ninto dataVector01\n" << endl;
-	cout << "dataVector01 Size: " << dataVector01.size() << "\n" << endl;
-
-	for (int i = 0; i < dataVector01.size(); i++)
-	{
-		cout << i+1 << ". " << dataVector01[i] << endl;
-		if (i == 42)
-		{
-
-		}
+		string line;
+		getline(input03, line);
+		readVector03.push_back(line);
+		cout << count03 + 1 << ". " << readVector03.back() << " -		readStack02 size: " << readVector03.size() << endl;
+		count03++;
 	}
 
 	cout << "\n**END**\n" << endl;
